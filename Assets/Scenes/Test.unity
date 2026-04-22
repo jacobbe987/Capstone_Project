@@ -659,6 +659,7 @@ Transform:
   m_Children:
   - {fileID: 1078694831}
   - {fileID: 809265582}
+  - {fileID: 1787266304}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1241933798
@@ -676,7 +677,7 @@ MonoBehaviour:
   rb: {fileID: 1241933799}
   groundCheck: {fileID: 809265581}
   mainCamera: {fileID: 1078694829}
-  speed: 2
+  speed: 5
   jumpHeight: 4
   gravity: -9.81
   fallMultiplier: 2.5
@@ -707,6 +708,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &1787266303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1787266304}
+  m_Layer: 0
+  m_Name: WeaponPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1787266304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787266303}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.60179585, y: 0.6134249, z: 0.3712705, w: 0.3517242}
+  m_LocalPosition: {x: 0.29, y: 0.030000031, z: 0.68}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1241933797}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
