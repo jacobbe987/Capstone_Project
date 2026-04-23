@@ -5,10 +5,8 @@ using UnityEngine.Pool;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    [SerializeField] protected Bullet _bulletPrefab;
-    [SerializeField] protected float _bulletSpeed;
+    [SerializeField] protected SO_WeaponData _weaponData;
     [SerializeField] protected Transform _bulletSpawnPos;
-    [SerializeField] protected float _rof;
     [SerializeField] protected float _nextShot;
 
     //obj pooling
@@ -24,7 +22,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected Bullet CreateBullet()
     {
-        Bullet objBullet = Instantiate(_bulletPrefab);
+        Bullet objBullet = Instantiate(_weaponData._bulletPrefab);
         objBullet.gameObject.SetActive(false);
         objBullet.transform.SetParent(this.transform);
         objBullet.SetObjPool(_objPool);
@@ -46,6 +44,24 @@ public abstract class WeaponBase : MonoBehaviour
         Destroy(pooledBullet.gameObject);
     }
     public abstract void Shoot();
+
+    protected void ShootBullet(Vector3 direction)
+    {
+        Bullet bullet = _objPool.Get();
+
+        bullet.transform.SetPositionAndRotation(_bulletSpawnPos.position, Quaternion.identity);
+        bullet.transform.forward = direction;
+    }
+
+    protected bool CanShoot()
+    {
+        return Time.time > _nextShot;
+    }
+
+    protected void SetNextShot()
+    {
+        _nextShot = Time.time + (1f / _weaponData._rof);
+    }
 
     protected void Update()
     {
