@@ -4,6 +4,5 @@ using UnityEngine;
 public class SO_WeaponData : ScriptableObject
 {
     public Bullet _bulletPrefab;
-    public float _bulletSpeed;
     public float _rof;
 }

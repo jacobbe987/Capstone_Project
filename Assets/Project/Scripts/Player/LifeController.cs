@@ -27,7 +27,7 @@ public class LifeController : MonoBehaviour
 
     public void RemoveHp(int dmg)
     {
-        SoundFxManager._instance.PlayFxSound("PlayerHit");
+        //SoundFxManager._instance.PlayFxSound("PlayerHit");
         SetHp(_hp - dmg);
 
         //if(_hp <= 0)

@@ -134,7 +134,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 692989098}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &147166473
+--- !u!114 &147166476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,14 +143,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 147166469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 223f2d4b0a4c02a4893330451618f761, type: 3}
+  m_Script: {fileID: 11500000, guid: ceb7965c6acabce42bca27d9a1a42960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponData: {fileID: 11400000, guid: 6e68982aa8e6c984bab3edf0ff5713aa, type: 2}
   _bulletSpawnPos: {fileID: 1791754393}
   _nextShot: 1
-  _capacity: 20
-  _maxCapacity: 50
+  _capacity: 5
+  _maxCapacity: 10
 --- !u!1 &211306306
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 554482453326070993, guid: 485bacbf7d385e549a6f3a42c6be6d2c,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 147166473}
+      addedObject: {fileID: 147166476}
   m_SourcePrefab: {fileID: 100100000, guid: 485bacbf7d385e549a6f3a42c6be6d2c, type: 3}
 --- !u!1 &809265580
 GameObject:
@@ -438,6 +438,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1165823290}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1036828616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1036828612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb7965c6acabce42bca27d9a1a42960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponData: {fileID: 11400000, guid: 5d892328a79324d4391bb423413ef5d7, type: 2}
+  _bulletSpawnPos: {fileID: 1791754393}
+  _nextShot: 1
+  _capacity: 5
+  _maxCapacity: 19
 --- !u!1 &1078694828
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +624,7 @@ GameObject:
   - component: {fileID: 1114794432}
   - component: {fileID: 1114794431}
   - component: {fileID: 1114794430}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +789,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9178608683257128636, guid: 6aa6921f47a7aa5429736ebf8996373f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1036828616}
   m_SourcePrefab: {fileID: 100100000, guid: 6aa6921f47a7aa5429736ebf8996373f, type: 3}
 --- !u!1 &1241933791
 GameObject:
@@ -789,7 +810,7 @@ GameObject:
   - component: {fileID: 1241933799}
   - component: {fileID: 1241933798}
   - component: {fileID: 1241933800}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -904,7 +925,7 @@ MonoBehaviour:
   speed: 5
   jumpHeight: 4
   gravity: -9.81
-  fallMultiplier: 2.5
+  fallMultiplier: 4
 --- !u!54 &1241933799
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -915,7 +936,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}

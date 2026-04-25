@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public abstract class WeaponBase : MonoBehaviour
+public class WeaponBase : MonoBehaviour
 {
     [SerializeField] protected SO_WeaponData _weaponData;
     [SerializeField] protected Transform _bulletSpawnPos;
@@ -24,7 +24,7 @@ public abstract class WeaponBase : MonoBehaviour
     {
         Bullet objBullet = Instantiate(_weaponData._bulletPrefab);
         objBullet.gameObject.SetActive(false);
-        objBullet.transform.SetParent(this.transform);
+        //objBullet.transform.SetParent(this.transform);
         objBullet.SetObjPool(_objPool);
         return objBullet;
     }
@@ -43,7 +43,14 @@ public abstract class WeaponBase : MonoBehaviour
     {
         Destroy(pooledBullet.gameObject);
     }
-    public abstract void Shoot();
+    public void Shoot()
+    {
+        if (Input.GetMouseButton(0) && CanShoot())
+        {
+            ShootBullet(_bulletSpawnPos.forward);
+            SetNextShot();
+        }
+    }
 
     protected void ShootBullet(Vector3 direction)
     {
@@ -51,6 +58,7 @@ public abstract class WeaponBase : MonoBehaviour
 
         bullet.transform.SetPositionAndRotation(_bulletSpawnPos.position, Quaternion.identity);
         bullet.transform.forward = direction;
+        bullet.BulletPhysic();
     }
 
     protected bool CanShoot()
