@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         ApplyGravity();
+        ApplyFriction();
         PlayerMovement();
     }
 
@@ -73,6 +74,17 @@ public class PlayerController : MonoBehaviour
         {
             float appliedGravity = (verticalVelocity < 0f) ? gravity * fallMultiplier : gravity;
             verticalVelocity += appliedGravity * Time.fixedDeltaTime;
+        }
+    }
+
+    private void ApplyFriction()
+    {
+        if (groundCheck.CheckIsGrounded())
+        {
+            Vector3 vel = rb.velocity;
+            vel.x *= 0.2f;
+            vel.z *= 0.2f;
+            rb.velocity = vel;
         }
     }
 

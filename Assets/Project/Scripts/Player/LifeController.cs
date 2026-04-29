@@ -5,6 +5,7 @@ public class LifeController : MonoBehaviour
 {
     [SerializeField] private UnityEvent<int, int> _onChangeHp;
     [SerializeField] private int _hp, _maxHp;
+    private bool _isDead = false;
 
     public int Hp { get => _hp; set => SetHp(value); }
     public int Maxhp { get => _maxHp; set => SetMaxHp(value); }
@@ -27,20 +28,28 @@ public class LifeController : MonoBehaviour
 
     public void RemoveHp(int dmg)
     {
+        if (_isDead) return;
         //SoundFxManager._instance.PlayFxSound("PlayerHit");
         SetHp(_hp - dmg);
 
-        //if(_hp <= 0)
-        //{
-        //    Destroy(gameObject);
+        if(_hp <= 0)
+        {
+            _isDead = true;
+            Destroy(gameObject);
             
-        //}
+        }
     }
 
     public void AddHp(int hpAmount)
     {
         SetHp(_hp + hpAmount);
 
+    }
+
+    public void ResetLife()
+    {
+        _isDead = false;
+        SetHp(Maxhp);
     }
 
     [ContextMenu("inflict 20 dmg")]
