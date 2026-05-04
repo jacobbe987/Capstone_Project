@@ -8,6 +8,7 @@ public class WeaponBase : MonoBehaviour
     [SerializeField] protected SO_WeaponData _weaponData;
     [SerializeField] protected Transform _bulletSpawnPos;
     [SerializeField] protected float _nextShot;
+    [SerializeField] protected GameObject _shootFX;
 
     //obj pooling
     protected IObjectPool<Bullet> _objPool;
@@ -49,6 +50,8 @@ public class WeaponBase : MonoBehaviour
         {
             ShootBullet(_bulletSpawnPos.forward);
             SetNextShot();
+            Instantiate(_shootFX, _bulletSpawnPos.position, Quaternion.identity);
+
         }
     }
 
@@ -56,7 +59,7 @@ public class WeaponBase : MonoBehaviour
     {
         Bullet bullet = _objPool.Get();
 
-        bullet.transform.SetPositionAndRotation(_bulletSpawnPos.position, Quaternion.identity);
+        bullet.transform.SetPositionAndRotation(_bulletSpawnPos.position, _bulletSpawnPos.rotation);
         bullet.transform.forward = direction;
         bullet.BulletPhysic();
     }

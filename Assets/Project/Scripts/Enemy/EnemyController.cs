@@ -10,19 +10,16 @@ public abstract class EnemyController : MonoBehaviour
     protected NavMeshAgent _agent;
     protected Transform _player;
     protected LifeController _lifeController;
+    protected Animator _anim;
 
-    private IObjectPool<EnemyController> _objPool;
-
-    public void SetObjPool(IObjectPool<EnemyController> pool)
-    {
-        _objPool = pool;
-    }
+    protected bool _isAttacking = false;
 
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _lifeController = GetComponent<LifeController>();
+        _anim = GetComponent<Animator>();
     }
 
     protected virtual void Start()
@@ -56,11 +53,6 @@ public abstract class EnemyController : MonoBehaviour
                 Attack();
                 break;
         }
-    }
-
-    public void Deactive()
-    {
-        _objPool.Release(this);
     }
 
     protected abstract void Patrol();

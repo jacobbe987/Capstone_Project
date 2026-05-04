@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyKamikaze : EnemyController
@@ -13,6 +14,8 @@ public class EnemyKamikaze : EnemyController
 
         if (!_agent.isOnNavMesh)
         _agent.SetDestination(_patrolPoints[_arrIndex].position);
+
+        _anim.SetBool("isWalking", true);
     }
     protected override void Attack()
     {
@@ -34,7 +37,17 @@ public class EnemyKamikaze : EnemyController
         if(collision.collider.TryGetComponent<LifeController>(out var life))
         {
             life.RemoveHp(_enemyInfo._damage);
-            Deactive();
+            StartCoroutine(AttackAnim());
         }
+    }
+
+    private IEnumerator AttackAnim()
+    {
+        _isAttacking = true;
+        _agent.isStopped = true;
+        _anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(_enemyInfo._attackInterval);
+        _isAttacking = false;
+        _agent.isStopped = false;
     }
 }

@@ -46,12 +46,6 @@ public class LifeController : MonoBehaviour
 
     }
 
-    public void ResetLife()
-    {
-        _isDead = false;
-        SetHp(Maxhp);
-    }
-
     [ContextMenu("inflict 20 dmg")]
     public void Inflict20Dmg()
     {

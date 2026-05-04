@@ -66,5 +66,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 86e420b3abc9f5e468c2dfe2f319ff55,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5950312770104938395}
   m_SourcePrefab: {fileID: 100100000, guid: 86e420b3abc9f5e468c2dfe2f319ff55, type: 3}
+--- !u!1 &554482453326070993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 86e420b3abc9f5e468c2dfe2f319ff55,
+    type: 3}
+  m_PrefabInstance: {fileID: 824302816766802304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5950312770104938395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554482453326070993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb7965c6acabce42bca27d9a1a42960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponData: {fileID: 11400000, guid: 6e68982aa8e6c984bab3edf0ff5713aa, type: 2}
+  _bulletSpawnPos: {fileID: 0}
+  _nextShot: 1
+  _shootFX: {fileID: 8078720523478869859, guid: d1a3e2de8b5764441871203923bd302d,
+    type: 3}
+  _capacity: 5
+  _maxCapacity: 10

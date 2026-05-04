@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6fca14690a566640b0bb59ca7c6afe5, type: 3}
   m_Name: MachineGun
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 1107968754777726587, guid: f7fe4bb2ec06cf54d829a77e22c75eb4,
+  _bulletPrefab: {fileID: 4613681425264028196, guid: ed7b8d0ddf156a9419b2822d84bf01ad,
     type: 3}
   _rof: 4

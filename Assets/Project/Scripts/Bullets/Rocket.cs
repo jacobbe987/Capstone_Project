@@ -9,8 +9,11 @@ public class Rocket : Bullet
     [SerializeField] private float _explosionForce = 700f;
     [SerializeField] private float _dmg = 100f;
     [SerializeField] private LayerMask _hitMask;
+    [SerializeField] private GameObject _explosionFX;
     public override void BulletPhysic()
     {
+        SoundFxManager._instance.PlayFxSound("ShotRocket");
+
         Vector3 direction = transform.forward;
         direction.Normalize();
         _rb.velocity = direction * _speed;
@@ -29,7 +32,8 @@ public class Rocket : Bullet
         foreach (Collider hit in hits)
         {
             LifeController life = hit.GetComponentInParent<LifeController>();
-            if (life != null)
+            Rigidbody rb = hit.GetComponent<Rigidbody>();
+            if (life != null && rb.isKinematic)
             {
                 float distance = Vector3.Distance(transform.position, hit.transform.position);
                 float damagePercent = 1f - (distance / _explosionRadius);
@@ -39,8 +43,7 @@ public class Rocket : Bullet
             }
 
 
-            Rigidbody rb = hit.GetComponent<Rigidbody>();
-            if (rb != null)
+            if (rb != null && !rb.isKinematic)
             {
                 rb.AddExplosionForce(_explosionForce, transform.position, _explosionRadius, 0f, ForceMode.Impulse);
 
@@ -49,13 +52,10 @@ public class Rocket : Bullet
                 horizontal = Vector3.ClampMagnitude(horizontal, 1.5f);
 
                 rb.velocity = new Vector3(horizontal.x, vel.y, horizontal.z);
-                //vel.x *= 0.3f;
-                //vel.z *= 0.3f;
-                //rb.velocity = vel;
             }
         }
 
-        // Instantiate(explosionFX, transform.position, Quaternion.identity);
+        Instantiate(_explosionFX, transform.position, Quaternion.identity);
 
         _rb.velocity = Vector3.zero;
         _rb.angularVelocity = Vector3.zero;

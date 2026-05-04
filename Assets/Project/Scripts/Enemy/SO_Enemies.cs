@@ -9,5 +9,6 @@ public class SO_Enemies : ScriptableObject
     public float _triggerDistance;
     public float _speed;
     public float _attackSpeed;
+    public float _attackInterval;
     public int _damage;
 }
