@@ -32,7 +32,7 @@ public class LifeController : MonoBehaviour
         //SoundFxManager._instance.PlayFxSound("PlayerHit");
         SetHp(_hp - dmg);
 
-        if(_hp <= 0)
+        if(_hp <= 0 && this.gameObject.CompareTag("Enemy"))
         {
             _isDead = true;
             Destroy(gameObject);

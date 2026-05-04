@@ -10,8 +10,8 @@ public class SoundMixerManager : MonoBehaviour
     //[SerializeField] public Slider _sliderMusic;
 
     public float _masterVolume;
-    public float _soundFxVolume;
-    public float _musicVolume;
+    //public float _soundFxVolume;
+    //public float _musicVolume;
 
     private void Start()
     {
@@ -27,17 +27,17 @@ public class SoundMixerManager : MonoBehaviour
         _audioMixer.SetFloat("MasterVolume", Mathf.Log10(_masterVolume) * 20f);
     }
 
-    public void SetSoundFxVolume(float volume)
-    {
-        _soundFxVolume = volume;
-        _audioMixer.SetFloat("SoundFxVolume", Mathf.Log10(_soundFxVolume) * 20f);
-    }
+    //public void SetSoundFxVolume(float volume)
+    //{
+    //    _soundFxVolume = volume;
+    //    _audioMixer.SetFloat("SoundFxVolume", Mathf.Log10(_soundFxVolume) * 20f);
+    //}
 
-    public void SetMusicVolume(float volume)
-    {
-        _musicVolume = volume;
-        _audioMixer.SetFloat("MusicVolume", Mathf.Log10(_musicVolume) * 20f);
-    }
+    //public void SetMusicVolume(float volume)
+    //{
+    //    _musicVolume = volume;
+    //    _audioMixer.SetFloat("MusicVolume", Mathf.Log10(_musicVolume) * 20f);
+    //}
 
     //public void SetSlider(Slider channel, float volume)
     //{
